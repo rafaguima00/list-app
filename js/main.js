@@ -1,21 +1,21 @@
 const btAdicionar = document.querySelector('#bt-adicionar')
 const itens = JSON.parse(localStorage.getItem("itemList")) || []
 
-itens.forEach((elemento) => {
-    adicionarElemento(elemento.nota)
+itens.forEach(item => {
+    adicionarElemento(item.nota)
 })
 
-btAdicionar.addEventListener('click', (evento) => {
-    evento.preventDefault()
-
+btAdicionar.addEventListener('click', e => {
+    e.preventDefault()
+    
     const textAreaAdd = document.querySelector('#textarea-add')
 
-    if(textAreaAdd.value !== "") {
+    if (textAreaAdd.value !== "") {
         const novoItem = {
             "nota": textAreaAdd.value
         }
 
-        adicionarElemento(novoItem)
+        adicionarElemento(novoItem.nota)
         itens.push(novoItem)
 
         localStorage.setItem("itemList", JSON.stringify(itens))
